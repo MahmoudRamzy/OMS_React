@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { Link as RouterLink } from 'react-router-dom';
 import {
   Toolbar,
   IconButton,
@@ -10,11 +9,11 @@ import {
   Box,
   Menu,
   MenuItem,
-  Link,
 } from '@mui/material';
 import { Menu as MenuIcon, AccountCircle } from '@mui/icons-material';
 import { drawerWidth } from '../Constants';
 import SearchBar from './SearchBar';
+import MyLink from '../Components/MyLink';
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
@@ -60,9 +59,7 @@ function Header({ open, handleToggleDrawer }) {
           <MenuIcon />
         </IconButton>
         <Typography variant='h6' noWrap component='div'>
-          <Link component={RouterLink} to='/'>
-            Order Management System
-          </Link>
+          <MyLink route='/' text='Order Management System'></MyLink>
         </Typography>
         <SearchBar />
         <Box sx={{ flexGrow: 1 }} />

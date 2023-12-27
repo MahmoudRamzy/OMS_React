@@ -11,6 +11,7 @@ import Projects from './Screens/Projects';
 import Invoices from './Screens/Invoices';
 import Payments from './Screens/Payments';
 import Shipments from './Screens/Shipments';
+import Vendors from './Screens/Vendors';
 
 function App() {
   const [open, setOpen] = React.useState(true);
@@ -36,6 +37,7 @@ function App() {
               <Route path='/invoices/' element={<Invoices />} />
               <Route path='/payments/' element={<Payments />} />
               <Route path='/shipments/' element={<Shipments />} />
+              <Route path='/vendors/' element={<Vendors />} />
             </Routes>
           </Box>
 

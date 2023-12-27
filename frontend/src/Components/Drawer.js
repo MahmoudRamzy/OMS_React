@@ -11,12 +11,16 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import {
+  AutoAwesomeMosaic as AutoAwesomeMosaicIcon,
+  Note as NoteIcon,
+  LocalShipping as LocalShippingIcon,
+  PriceChange as PriceChangeIcon,
+  CoPresent as CoPresentIcon,
+} from '@mui/icons-material';
 import Button from '@mui/material/Link';
 
 import { drawerWidth } from '../Constants';
-import MyLink from './MyLink';
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -86,7 +90,11 @@ function Drawer({ handleToggleDrawer, open }) {
               minHeight: 48,
               justifyContent: open ? 'initial' : 'center',
               px: 2.5,
+              textDecoration: 'none',
+              color: 'inherit',
             }}
+            component={RouterLink}
+            to='/projects/'
           >
             <ListItemIcon
               sx={{
@@ -95,46 +103,115 @@ function Drawer({ handleToggleDrawer, open }) {
                 justifyContent: 'center',
               }}
             >
-              <InboxIcon />
+              <AutoAwesomeMosaicIcon />
+            </ListItemIcon>
+            <ListItemText sx={{ opacity: open ? 1 : 0 }}>Projects</ListItemText>
+          </ListItemButton>
+        </ListItem>
+
+        <ListItem key={'invoices'} disablePadding sx={{ display: 'block' }}>
+          <ListItemButton
+            sx={{
+              minHeight: 48,
+              justifyContent: open ? 'initial' : 'center',
+              px: 2.5,
+              textDecoration: 'none',
+              color: 'inherit',
+            }}
+            component={RouterLink}
+            to='/invoices/'
+          >
+            <ListItemIcon
+              sx={{
+                minWidth: 0,
+                mr: open ? 3 : 'auto',
+                justifyContent: 'center',
+              }}
+            >
+              <NoteIcon />
+            </ListItemIcon>
+            <ListItemText sx={{ opacity: open ? 1 : 0 }}>Invoices</ListItemText>
+          </ListItemButton>
+        </ListItem>
+
+        <ListItem key={'shipments'} disablePadding sx={{ display: 'block' }}>
+          <ListItemButton
+            sx={{
+              minHeight: 48,
+              justifyContent: open ? 'initial' : 'center',
+              px: 2.5,
+              textDecoration: 'none',
+              color: 'inherit',
+            }}
+            component={RouterLink}
+            to='/shipments/'
+          >
+            <ListItemIcon
+              sx={{
+                minWidth: 0,
+                mr: open ? 3 : 'auto',
+                justifyContent: 'center',
+              }}
+            >
+              <LocalShippingIcon />
             </ListItemIcon>
             <ListItemText sx={{ opacity: open ? 1 : 0 }}>
-              <Button
-                sx={{ textDecoration: 'none', color: 'inherit' }}
-                component={RouterLink}
-                to='/projects/'
-              >
-                Projects
-              </Button>
-              {/* <MyLink route='/projects/' text='Projects' /> */}
+              Shipments
             </ListItemText>
+          </ListItemButton>
+        </ListItem>
+
+        <ListItem key={'payments'} disablePadding sx={{ display: 'block' }}>
+          <ListItemButton
+            sx={{
+              minHeight: 48,
+              justifyContent: open ? 'initial' : 'center',
+              px: 2.5,
+              textDecoration: 'none',
+              color: 'inherit',
+            }}
+            component={RouterLink}
+            to='/payments/'
+          >
+            <ListItemIcon
+              sx={{
+                minWidth: 0,
+                mr: open ? 3 : 'auto',
+                justifyContent: 'center',
+              }}
+            >
+              <PriceChangeIcon />
+            </ListItemIcon>
+            <ListItemText sx={{ opacity: open ? 1 : 0 }}>Payments</ListItemText>
+          </ListItemButton>
+        </ListItem>
+
+        <ListItem key={'vendors'} disablePadding sx={{ display: 'block' }}>
+          <ListItemButton
+            sx={{
+              minHeight: 48,
+              justifyContent: open ? 'initial' : 'center',
+              px: 2.5,
+              textDecoration: 'none',
+              color: 'inherit',
+            }}
+            component={RouterLink}
+            to='/vendors/'
+          >
+            <ListItemIcon
+              sx={{
+                minWidth: 0,
+                mr: open ? 3 : 'auto',
+                justifyContent: 'center',
+              }}
+            >
+              <CoPresentIcon />
+            </ListItemIcon>
+            <ListItemText sx={{ opacity: open ? 1 : 0 }}>Vendors</ListItemText>
           </ListItemButton>
         </ListItem>
       </List>
       <Divider />
-      <List>
-        {['Vendors', 'Reports', 'Admin'].map((text, index) => (
-          <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? 'initial' : 'center',
-                px: 2.5,
-              }}
-            >
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : 'auto',
-                  justifyContent: 'center',
-                }}
-              >
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
     </MyDrawer>
   );
 }
